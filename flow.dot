@@ -1,37 +1,34 @@
 digraph {
-start -> uptate_start;
-start -> output_start;
+start -> load_config;
+load_config -> update;
+load_config -> get_latest_unplayed_urls;
+load_config -> get_latest_urls;
 
 subgraph cluster_0 {
-    uptate_start -> uptate_load_config;
-    uptate_load_config -> uptate_update;
-    uptate_update -> uptate_allupdated;
 
-    uptate_allupdated -> uptate_get_rss[label="no"];
-    uptate_get_rss -> uptate_add_entry;
-    uptate_add_entry -> uptate_allupdated;
+    update -> allupdated;
 
-    uptate_allupdated[label="Are they\nall updated?"]
+    allupdated -> get_rss[label="no"];
+    get_rss -> add_entry;
+    add_entry -> allupdated;
+
+    allupdated[label="Are they\nall updated?"]
 }    
     
     
 subgraph cluster_1 {    
-    output_start -> output_load_config;
-    output_load_config -> output_get_latest_urls;
-    output_load_config -> output_get_latest_unplayed_urls;
-    output_get_latest_unplayed_urls -> output_loop;
-    output_loop -> output_download[label="not finished"];
-    output_download -> output_mark_played;
-    output_mark_played -> output_loop;
+    get_latest_unplayed_urls -> loop;
+    loop -> download[label="no"];
+    download -> mark_played;
+    mark_played -> loop;
 
-    output_get_latest_urls -> output_output;
+    get_latest_urls -> output_playlist;
 
+    loop[label="Have you downloaded\nall new episodes?"]
 
 
-    {rank=same;  output_get_latest_urls  output_get_latest_unplayed_urls}
-    {rank=same; output_output output_download}
 }
-output_loop -> exit[label="finished"];
-output_output -> exit;
-uptate_allupdated -> exit[label="yes"];
+loop -> exit[label="yes"];
+output_playlist -> exit;
+allupdated -> exit[label="yes"];
 }
