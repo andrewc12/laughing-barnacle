@@ -18,8 +18,8 @@ subgraph cluster_0 {
     
 subgraph cluster_1 {    
     get_latest_unplayed_urls -> loop;
-    loop -> download[label="no"];
-    download -> mark_played;
+    loop -> download_episode[label="no"];
+    download_episode -> mark_played;
     mark_played -> loop;
 
     get_latest_urls -> output_playlist;

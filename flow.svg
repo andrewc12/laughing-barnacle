@@ -129,16 +129,16 @@
 <path fill="none" stroke="black" d="M68.1736,-51.9727C61.3148,-62.1303 53.5648,-75.6303 50,-89 45.8779,-104.46 46.1983,-109.458 50,-125 53.5955,-139.699 60.5409,-154.714 67.6485,-167.528"/>
 <polygon fill="black" stroke="black" points="64.7661,-169.535 72.8071,-176.434 70.8232,-166.026 64.7661,-169.535"/>
 </g>
-<!-- download -->
-<g id="node10" class="node"><title>download</title>
-<ellipse fill="none" stroke="black" cx="606" cy="-107" rx="55.4913" ry="18"/>
-<text text-anchor="middle" x="606" y="-103.3" font-family="Times,serif" font-size="14.00">download</text>
+<!-- download_episode -->
+<g id="node10" class="node"><title>download_episode</title>
+<ellipse fill="none" stroke="black" cx="581" cy="-107" rx="95.5831" ry="18"/>
+<text text-anchor="middle" x="581" y="-103.3" font-family="Times,serif" font-size="14.00">download_episode</text>
 </g>
-<!-- loop&#45;&gt;download -->
-<g id="edge10" class="edge"><title>loop&#45;&gt;download</title>
-<path fill="none" stroke="black" d="M570.519,-175.971C577.358,-162.871 585.635,-147.013 592.475,-133.911"/>
-<polygon fill="black" stroke="black" points="595.634,-135.421 597.159,-124.936 589.429,-132.182 595.634,-135.421"/>
-<text text-anchor="middle" x="596" y="-146.8" font-family="Times,serif" font-size="14.00">no</text>
+<!-- loop&#45;&gt;download_episode -->
+<g id="edge10" class="edge"><title>loop&#45;&gt;download_episode</title>
+<path fill="none" stroke="black" d="M563.622,-175.971C566.884,-163.211 570.815,-147.835 574.113,-134.937"/>
+<polygon fill="black" stroke="black" points="577.511,-135.777 576.597,-125.221 570.729,-134.043 577.511,-135.777"/>
+<text text-anchor="middle" x="580" y="-146.8" font-family="Times,serif" font-size="14.00">no</text>
 </g>
 <!-- loop&#45;&gt;exit -->
 <g id="edge14" class="edge"><title>loop&#45;&gt;exit</title>
@@ -148,18 +148,18 @@
 </g>
 <!-- mark_played -->
 <g id="node11" class="node"><title>mark_played</title>
-<ellipse fill="none" stroke="black" cx="552" cy="-34" rx="70.6878" ry="18"/>
-<text text-anchor="middle" x="552" y="-30.3" font-family="Times,serif" font-size="14.00">mark_played</text>
+<ellipse fill="none" stroke="black" cx="496" cy="-34" rx="70.6878" ry="18"/>
+<text text-anchor="middle" x="496" y="-30.3" font-family="Times,serif" font-size="14.00">mark_played</text>
 </g>
-<!-- download&#45;&gt;mark_played -->
-<g id="edge11" class="edge"><title>download&#45;&gt;mark_played</title>
-<path fill="none" stroke="black" d="M593.203,-89.174C586.641,-80.5471 578.516,-69.8634 571.219,-60.2697"/>
-<polygon fill="black" stroke="black" points="573.92,-58.0391 565.081,-52.1984 568.348,-62.2767 573.92,-58.0391"/>
+<!-- download_episode&#45;&gt;mark_played -->
+<g id="edge11" class="edge"><title>download_episode&#45;&gt;mark_played</title>
+<path fill="none" stroke="black" d="M560.856,-89.174C549.661,-79.8224 535.572,-68.054 523.388,-57.8769"/>
+<polygon fill="black" stroke="black" points="525.625,-55.1849 515.706,-51.4603 521.137,-60.5573 525.625,-55.1849"/>
 </g>
 <!-- mark_played&#45;&gt;loop -->
 <g id="edge12" class="edge"><title>mark_played&#45;&gt;loop</title>
-<path fill="none" stroke="black" d="M547.941,-52.3972C545.694,-62.9249 543.133,-76.6572 542,-89 540.537,-104.933 540.461,-109.074 542,-125 543.301,-138.456 545.853,-153.054 548.49,-165.878"/>
-<polygon fill="black" stroke="black" points="545.082,-166.682 550.599,-175.727 551.927,-165.216 545.082,-166.682"/>
+<path fill="none" stroke="black" d="M486.263,-51.8333C476.897,-70.3609 465.575,-100.734 476,-125 483.619,-142.735 497.564,-158.302 511.761,-170.705"/>
+<polygon fill="black" stroke="black" points="509.712,-173.553 519.636,-177.264 514.192,-168.175 509.712,-173.553"/>
 </g>
 <!-- output_playlist&#45;&gt;exit -->
 <g id="edge15" class="edge"><title>output_playlist&#45;&gt;exit</title>
