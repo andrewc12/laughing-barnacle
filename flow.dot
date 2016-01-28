@@ -1,0 +1,37 @@
+digraph {
+start -> uptate_start;
+start -> output_start;
+
+subgraph cluster_0 {
+    uptate_start -> uptate_load_config;
+    uptate_load_config -> uptate_update;
+    uptate_update -> uptate_allupdated;
+
+    uptate_allupdated -> uptate_get_rss[label="no"];
+    uptate_get_rss -> uptate_add_entry;
+    uptate_add_entry -> uptate_allupdated;
+
+    uptate_allupdated[label="Are they\nall updated?"]
+}    
+    
+    
+subgraph cluster_1 {    
+    output_start -> output_load_config;
+    output_load_config -> output_get_latest_urls;
+    output_load_config -> output_get_latest_unplayed_urls;
+    output_get_latest_unplayed_urls -> output_loop;
+    output_loop -> output_download[label="not finished"];
+    output_download -> output_mark_played;
+    output_mark_played -> output_loop;
+
+    output_get_latest_urls -> output_output;
+
+
+
+    {rank=same;  output_get_latest_urls  output_get_latest_unplayed_urls}
+    {rank=same; output_output output_download}
+}
+output_loop -> exit[label="finished"];
+output_output -> exit;
+uptate_allupdated -> exit[label="yes"];
+}

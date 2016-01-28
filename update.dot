@@ -1,0 +1,11 @@
+digraph {
+    start -> load_config;
+    load_config -> update;
+    update -> allupdated;
+    allupdated -> exit[label="yes"];
+    allupdated -> get_rss[label="no"];
+    get_rss -> add_entry;
+    add_entry -> allupdated;
+
+    allupdated[label="Are they\nall updated?"]
+}

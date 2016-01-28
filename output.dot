@@ -1,0 +1,16 @@
+digraph {
+    start -> load_config;
+    load_config -> get_latest_urls;
+    load_config -> get_latest_unplayed_urls;
+    get_latest_unplayed_urls -> loop;
+    loop -> download[label="not finished"];
+    download -> mark_played;
+    mark_played -> loop;
+    loop -> exit[label="finished"];
+    get_latest_urls -> output;
+    output -> exit;
+
+
+    {rank=same;  get_latest_urls  get_latest_unplayed_urls}
+    {rank=same; output download}
+}
