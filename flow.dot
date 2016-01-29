@@ -1,8 +1,11 @@
 digraph {
 start -> load_config;
-load_config -> update;
-load_config -> get_latest_unplayed_urls;
-load_config -> get_latest_urls;
+load_config -> parse_args;
+
+
+parse_args -> update;
+parse_args -> get_latest_unplayed_urls;
+parse_args -> get_latest_urls;
 
 subgraph cluster_0 {
 
