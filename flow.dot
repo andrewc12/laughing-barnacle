@@ -6,6 +6,8 @@ load_config -> parse_args;
 parse_args -> update;
 parse_args -> get_latest_unplayed_urls;
 parse_args -> get_latest_urls;
+parse_args -> import_opml;
+parse_args -> get_enties;
 
 subgraph cluster_0 {
 
@@ -16,6 +18,7 @@ subgraph cluster_0 {
     add_entry -> allupdated;
 
     allupdated[label="Are they\nall updated?"]
+    label = "update\nfeeds";
 }    
     
     
@@ -25,13 +28,29 @@ subgraph cluster_1 {
     download_episode -> mark_played;
     mark_played -> loop;
 
-    get_latest_urls -> output_playlist;
-
     loop[label="Have you downloaded\nall new episodes?"]
-
-
+    label = "download\nfiles";
 }
+
+subgraph cluster_2 {    
+import_opml -> add_enties;
+label = "import\nopml";
+}
+
+subgraph cluster_3 {    
+get_enties -> export_opml;
+label = "export\nopml";
+}
+
+subgraph cluster_4 {    
+get_latest_urls -> output_playlist;
+label = "create\nplaylist";
+}
+
 loop -> exit[label="yes"];
 output_playlist -> exit;
 allupdated -> exit[label="yes"];
+
+add_enties -> exit;
+export_opml -> exit;
 }
