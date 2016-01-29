@@ -2,12 +2,22 @@
 import argparse
 import yaml #python3-yaml
 
+#set_defaults
+cfg = {}
+configfile = 'config.yml'
+
 def save_config():
-	
+	with open(configfile, 'w') as ymlfile:
+		yaml.dump(cfg, ymlfile)
 	return
 
-#set_defaults
-configfile = 'config.yml'
+def load_config():
+	global cfg
+	with open(configfile, 'r') as ymlfile:
+		cfg = yaml.load(ymlfile)
+	return
+
+
 
 parser = argparse.ArgumentParser(description='TODO insert description')
 
@@ -23,10 +33,10 @@ if args.config:
 	configfile = args.config
 #load_config
 try:
-	with open(configfile, 'r') as ymlfile:
-		cfg = yaml.load(ymlfile)
+	load_config()
 except FileNotFoundError as err:
 	save_config()
+	load_config()
 	#with open(configfile, 'r') as ymlfile:
 	#	cfg = yaml.load(ymlfile)
 
