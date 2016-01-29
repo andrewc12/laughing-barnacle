@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 import argparse
-import yaml
+import yaml #python3-yaml
 
 #set_defaults
-def set_defaults():
-	config = 'config.yml'
-	return
-set_defaults()
+config = 'config.yml'
 
 parser = argparse.ArgumentParser(description='TODO insert description')
 
@@ -21,10 +18,11 @@ args = parser.parse_args()
 if args.config:
 	config = args.config
 #load_config
-with open(config, 'r') as ymlfile:
-	cfg = yaml.load(ymlfile)
-
-
+try:
+	with open(config, 'r') as ymlfile:
+		cfg = yaml.load(ymlfile)
+except FileNotFoundError as err:
+	#save_config()
 
 if args.verbose:
 	print("~ Verbose!")
