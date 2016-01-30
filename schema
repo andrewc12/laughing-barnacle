@@ -16,7 +16,7 @@ table items
 
 
 id integer primarykey
-channel_id integer = Foreignkey table.id
+channel_id integer = Foreignkey channels.id
 
 #Element	Description	Example
 title string	The title of the item.	Venice Film Festival Tries to Quit Sinking
@@ -51,17 +51,21 @@ engine = sa.create_engine('sqlite:///mymusic.db', echo=True)
 Base = sa.ext.declarative.declarative_base()
 
 ########################################################################
-class Artist(Base):
+class Channel(Base):
 	""""""
-	__tablename__ = "artists"
+	__tablename__ = "channels"
 	
 	id = sa.Column(sa.Integer, primary_key=True)
-	name = sa.Column(sa.String)  
+	title = sa.Column(sa.String, nullable=False)
+	link = sa.Column(sa.String, nullable=False)
+	description = sa.Column(sa.String, nullable=False)
 	
 	#----------------------------------------------------------------------
-	def __init__(self, name):
+	def __init__(self, title, link, description):
 		""""""
-		self.name = name    
+		self.title = title
+		self.link = link
+		self.description = description
 		
 ########################################################################
 class Album(Base):
