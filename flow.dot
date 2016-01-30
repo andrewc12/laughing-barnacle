@@ -9,6 +9,9 @@ parse_args -> get_latest_urls;
 parse_args -> import_opml;
 parse_args -> get_enties;
 
+parse_args -> add_entry2;
+parse_args -> delete_entry;
+
 subgraph cluster_0 {
 
     update -> allupdated;
@@ -48,10 +51,12 @@ label = "create\nplaylist";
 }
 
 subgraph cluster_5 {    
+add_entry2;
 label = "add\nfeed";
 }
 
 subgraph cluster_6 {    
+delete_entry;
 label = "delete\nfeed";
 }
 
@@ -63,4 +68,7 @@ allupdated -> exit[label="yes"];
 
 add_enties -> exit;
 export_opml -> exit;
+
+add_entry2 -> exit;
+delete_entry -> exit;
 }
