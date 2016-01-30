@@ -50,16 +50,16 @@ from sqlalchemy import Column, Date, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 
-engine = create_engine('sqlite:///mymusic.db', echo=True)
-Base = declarative_base()
+engine = sqlalchemy.create_engine('sqlite:///mymusic.db', echo=True)
+Base = sqlalchemy.declarative_base()
 
 ########################################################################
 class Artist(Base):
 	""""""
 	__tablename__ = "artists"
 	
-	id = Column(Integer, primary_key=True)
-	name = Column(String)  
+	id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+	name = sqlalchemy.Column(sqlalchemy.String)  
 	
 	#----------------------------------------------------------------------
 	def __init__(self, name):
@@ -71,14 +71,14 @@ class Album(Base):
 	""""""
 	__tablename__ = "albums"
 	
-	id = Column(Integer, primary_key=True)
-	title = Column(String)
-	release_date = Column(Date)
-	publisher = Column(String)
-	media_type = Column(String)
+	id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+	title = sqlalchemy.Column(sqlalchemy.String)
+	release_date = sqlalchemy.Column(sqlalchemy.Date)
+	publisher = sqlalchemy.Column(sqlalchemy.String)
+	media_type = sqlalchemy.Column(sqlalchemy.String)
 	
-	artist_id = Column(Integer, ForeignKey("artists.id"))
-	artist = relationship("Artist", backref=backref("albums", order_by=id))
+	artist_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("artists.id"))
+	artist = sqlalchemy.relationship("Artist", sqlalchemy.backref=backref("albums", order_by=id))
 	
 	#----------------------------------------------------------------------
 	def __init__(self, title, release_date, publisher, media_type):
