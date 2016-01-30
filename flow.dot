@@ -4,13 +4,13 @@ load_config -> parse_args;
 
 
 parse_args -> check;
-parse_args -> get_latest_unplayed_urls;
-parse_args -> get_latest_urls;
+parse_args -> get_latest_not_downloaded_item_urls;
+parse_args -> get_latest_item_urls;
 parse_args -> import_opml;
-parse_args -> get_enties;
+parse_args -> get_feeds;
 
-parse_args -> add_entry2;
-parse_args -> delete_entry;
+parse_args -> add_feed2;
+parse_args -> delete_feed;
 
 subgraph cluster_0 {
 
@@ -26,37 +26,37 @@ subgraph cluster_0 {
     
     
 subgraph cluster_1 {    
-    get_latest_unplayed_urls -> loop;
-    loop -> download_episode[label="no"];
-    download_episode -> mark_played;
+    get_latest_not_downloaded_item_urls -> loop;
+    loop -> download_item[label="no"];
+    download_item -> mark_played;
     mark_played -> loop;
 
-    loop[label="Have you downloaded\nall new episodes?"]
-    label = "download\nfiles";
+    loop[label="Have you downloaded\nall new items?"]
+    label = "download\nitems";
 }
 
 subgraph cluster_2 {    
-import_opml -> add_enties;
+import_opml -> add_feeds;
 label = "import\nopml";
 }
 
 subgraph cluster_3 {    
-get_enties -> export_opml;
+get_feeds -> export_opml;
 label = "export\nopml";
 }
 
 subgraph cluster_4 {    
-get_latest_urls -> output_playlist;
+get_latest_item_urls -> output_playlist;
 label = "create\nplaylist";
 }
 
 subgraph cluster_5 {    
-add_entry2;
+add_feed2;
 label = "add\nfeed";
 }
 
 subgraph cluster_6 {    
-delete_entry;
+delete_feed;
 label = "delete\nfeed";
 }
 
@@ -66,9 +66,9 @@ loop -> exit[label="yes"];
 output_playlist -> exit;
 allupdated -> exit[label="yes"];
 
-add_enties -> exit;
+add_feeds -> exit;
 export_opml -> exit;
 
-add_entry2 -> exit;
-delete_entry -> exit;
+add_feed2 -> exit;
+delete_feed -> exit;
 }
