@@ -45,21 +45,18 @@ source	The RSS channel that the item came from. More.
 
 
 # table_def.py
-from sqlalchemy import create_engine, ForeignKey
-from sqlalchemy import Column, Date, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+import sqlalchemy as sa
 
-engine = sqlalchemy.create_engine('sqlite:///mymusic.db', echo=True)
-Base = sqlalchemy.ext.declarative.declarative_base()
+engine = sa.create_engine('sqlite:///mymusic.db', echo=True)
+Base = sa.ext.declarative.declarative_base()
 
 ########################################################################
 class Artist(Base):
 	""""""
 	__tablename__ = "artists"
 	
-	id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-	name = sqlalchemy.Column(sqlalchemy.String)  
+	id = sa.Column(sa.Integer, primary_key=True)
+	name = sa.Column(sa.String)  
 	
 	#----------------------------------------------------------------------
 	def __init__(self, name):
@@ -71,14 +68,14 @@ class Album(Base):
 	""""""
 	__tablename__ = "albums"
 	
-	id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-	title = sqlalchemy.Column(sqlalchemy.String)
-	release_date = sqlalchemy.Column(sqlalchemy.Date)
-	publisher = sqlalchemy.Column(sqlalchemy.String)
-	media_type = sqlalchemy.Column(sqlalchemy.String)
+	id = sa.Column(sa.Integer, primary_key=True)
+	title = sa.Column(sa.String)
+	release_date = sa.Column(sa.Date)
+	publisher = sa.Column(sa.String)
+	media_type = sa.Column(sa.String)
 	
-	artist_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("artists.id"))
-	artist = sqlalchemy.orm.relationship("Artist", sqlalchemy.orm.backref=backref("albums", order_by=id))
+	artist_id = sa.Column(sa.Integer, sa.ForeignKey("artists.id"))
+	artist = sa.orm.relationship("Artist", sa.orm.backref=backref("albums", order_by=id))
 	
 	#----------------------------------------------------------------------
 	def __init__(self, title, release_date, publisher, media_type):
