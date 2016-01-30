@@ -46,9 +46,10 @@ source string	The RSS channel that the item came from. More.
 
 # table_def.py
 import sqlalchemy as sa
+from sqlalchemy.ext.declarative import declarative_base
 
 engine = sa.create_engine('sqlite:///podcasts.db', echo=True)
-Base = sa.ext.declarative.declarative_base()
+Base = declarative_base()
 
 ########################################################################
 class Channel(Base):
@@ -85,7 +86,7 @@ class Item(Base):
 	source = sa.Column(sa.String, nullable=False)
 	
 	channel_id = sa.Column(sa.Integer, sa.ForeignKey("channels.id"))
-	channel = sa.orm.relationship("Channel", sa.orm.backref=backref("items", order_by=id))
+	channel = sa.orm.relationship("Channel", backref=sa.orm.backref("items", order_by=id))
 	
 	#----------------------------------------------------------------------
 	def __init__(self, title, link, description, author, category, comments, enclosure, guid, pubDate, source):
