@@ -3,3 +3,4 @@
 #Think about database schema based on RSS specification
 learn sqlalchemy
 add arguments for adding channels
+add feeds table
