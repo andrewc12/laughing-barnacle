@@ -51,7 +51,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 
 engine = sqlalchemy.create_engine('sqlite:///mymusic.db', echo=True)
-Base = sqlalchemy.declarative_base()
+Base = sqlalchemy.ext.declarative.declarative_base()
 
 ########################################################################
 class Artist(Base):
@@ -78,7 +78,7 @@ class Album(Base):
 	media_type = sqlalchemy.Column(sqlalchemy.String)
 	
 	artist_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("artists.id"))
-	artist = sqlalchemy.relationship("Artist", sqlalchemy.backref=backref("albums", order_by=id))
+	artist = sqlalchemy.orm.relationship("Artist", sqlalchemy.orm.backref=backref("albums", order_by=id))
 	
 	#----------------------------------------------------------------------
 	def __init__(self, title, release_date, publisher, media_type):
