@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-561.74 1292,-561.74 1292,4 -4,4"/>
 <g id="clust1" class="cluster"><title>cluster_0</title>
 <polygon fill="none" stroke="black" points="8,-8 8,-348.74 172,-348.74 172,-8 8,-8"/>
-<text text-anchor="middle" x="90" y="-333.54" font-family="Times,serif" font-size="14.00">update</text>
+<text text-anchor="middle" x="90" y="-333.54" font-family="Times,serif" font-size="14.00">check</text>
 <text text-anchor="middle" x="90" y="-318.54" font-family="Times,serif" font-size="14.00">feeds</text>
 </g>
 <g id="clust2" class="cluster"><title>cluster_1</title>
@@ -69,15 +69,15 @@
 <path fill="none" stroke="black" d="M701,-448.553C701,-440.53 701,-430.788 701,-421.809"/>
 <polygon fill="black" stroke="black" points="704.5,-421.769 701,-411.769 697.5,-421.769 704.5,-421.769"/>
 </g>
-<!-- update -->
-<g id="node4" class="node"><title>update</title>
-<ellipse fill="none" stroke="black" cx="106" cy="-284.74" rx="42.7926" ry="18"/>
-<text text-anchor="middle" x="106" y="-281.04" font-family="Times,serif" font-size="14.00">update</text>
+<!-- check -->
+<g id="node4" class="node"><title>check</title>
+<ellipse fill="none" stroke="black" cx="108" cy="-284.74" rx="38.1938" ry="18"/>
+<text text-anchor="middle" x="108" y="-281.04" font-family="Times,serif" font-size="14.00">check</text>
 </g>
-<!-- parse_args&#45;&gt;update -->
-<g id="edge3" class="edge"><title>parse_args&#45;&gt;update</title>
-<path fill="none" stroke="black" d="M639.074,-392.336C519.091,-390.773 259.571,-383.361 178,-348.74 157.746,-340.144 139.175,-323.575 125.967,-309.586"/>
-<polygon fill="black" stroke="black" points="128.522,-307.193 119.205,-302.147 123.342,-311.901 128.522,-307.193"/>
+<!-- parse_args&#45;&gt;check -->
+<g id="edge3" class="edge"><title>parse_args&#45;&gt;check</title>
+<path fill="none" stroke="black" d="M639.032,-392.435C518.973,-391.047 259.327,-383.93 178,-348.74 158.181,-340.165 140.18,-323.668 127.396,-309.707"/>
+<polygon fill="black" stroke="black" points="129.728,-307.059 120.497,-301.859 124.471,-311.68 129.728,-307.059"/>
 </g>
 <!-- get_latest_unplayed_urls -->
 <g id="node5" class="node"><title>get_latest_unplayed_urls</title>
@@ -145,10 +145,10 @@
 <text text-anchor="middle" x="90" y="-206.67" font-family="Times,serif" font-size="14.00">Are they</text>
 <text text-anchor="middle" x="90" y="-191.67" font-family="Times,serif" font-size="14.00">all updated?</text>
 </g>
-<!-- update&#45;&gt;allupdated -->
-<g id="edge10" class="edge"><title>update&#45;&gt;allupdated</title>
-<path fill="none" stroke="black" d="M102.528,-266.41C100.962,-258.593 99.0513,-249.053 97.1983,-239.803"/>
-<polygon fill="black" stroke="black" points="100.625,-239.092 95.2293,-229.974 93.7618,-240.467 100.625,-239.092"/>
+<!-- check&#45;&gt;allupdated -->
+<g id="edge10" class="edge"><title>check&#45;&gt;allupdated</title>
+<path fill="none" stroke="black" d="M104.183,-266.802C102.409,-258.933 100.229,-249.257 98.1139,-239.873"/>
+<polygon fill="black" stroke="black" points="101.48,-238.891 95.8674,-229.905 94.6516,-240.43 101.48,-238.891"/>
 </g>
 <!-- loop -->
 <g id="node14" class="node"><title>loop</title>

@@ -3,7 +3,7 @@ start -> load_config;
 load_config -> parse_args;
 
 
-parse_args -> update;
+parse_args -> check;
 parse_args -> get_latest_unplayed_urls;
 parse_args -> get_latest_urls;
 parse_args -> import_opml;
@@ -14,14 +14,14 @@ parse_args -> delete_entry;
 
 subgraph cluster_0 {
 
-    update -> allupdated;
+    check -> allupdated;
 
     allupdated -> get_rss[label="no"];
     get_rss -> add_entry;
     add_entry -> allupdated;
 
     allupdated[label="Are they\nall updated?"]
-    label = "update\nfeeds";
+    label = "check\nfeeds";
 }    
     
     
