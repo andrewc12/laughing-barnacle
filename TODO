@@ -1,2 +1,4 @@
-Learn how to parse arguments (argparse)
-Look into configuration file saving/loading (pyyaml)
+#Learn how to parse arguments (argparse)
+#Look into configuration file saving/loading (pyyaml)
+Think about database schema based on RSS specification
+learn sqlalchemy
