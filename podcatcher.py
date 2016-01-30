@@ -28,6 +28,8 @@ parser.add_argument('--verbose',
 	help='verbose flag' )
 parser.add_argument('--import-opml', '-i')
 parser.add_argument('--export-opml', '-e')
+parser.add_argument('--add-feed', '-a')
+parser.add_argument('--delete-feed', '-d')
 
 args = parser.parse_args()
 
