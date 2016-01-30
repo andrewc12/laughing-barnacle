@@ -47,6 +47,16 @@ get_latest_urls -> output_playlist;
 label = "create\nplaylist";
 }
 
+subgraph cluster_5 {    
+label = "add\nfeed";
+}
+
+subgraph cluster_6 {    
+label = "delete\nfeed";
+}
+
+
+
 loop -> exit[label="yes"];
 output_playlist -> exit;
 allupdated -> exit[label="yes"];
