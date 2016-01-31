@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import argparse
 import yaml #python3-yaml
-from sqlalchemy #python3-sqlalchemy
+import sqlalchemy #python3-sqlalchemy
 
 #set_defaults
 cfg = {}
@@ -26,10 +26,10 @@ parser.add_argument('--config', '-c')
 parser.add_argument('--verbose',
 	action='store_true',
 	help='verbose flag' )
-parser.add_argument('--import-opml', '-i')
-parser.add_argument('--export-opml', '-e')
-parser.add_argument('--add-feed', '-a')
-parser.add_argument('--delete-feed', '-d')
+parser.add_argument('--importopml', '-i')
+parser.add_argument('--exportopml', '-e')
+parser.add_argument('--addfeed', '-a')
+parser.add_argument('--deletefeed', '-d')
 
 args = parser.parse_args()
 
@@ -41,6 +41,14 @@ try:
 except FileNotFoundError as err:
 	save_config()
 	load_config()
+
+if args.addfeed:
+	print("~ Add feed!")
+else:
+	print("~ Not add feed")
+
+
+
 
 if args.verbose:
 	print("~ Verbose!")
