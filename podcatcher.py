@@ -24,7 +24,7 @@ def load_config():
 	return
 
 def add_feed(url):
-	result = requests.get(url , headers=headers)
+	result = requests.get(url)
 	c = result.content
 
 	return
