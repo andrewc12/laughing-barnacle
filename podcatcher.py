@@ -51,12 +51,12 @@ def check_feed(feed):
 			except:
 				feed.channels = [Channel(channeltag.find('title').text,channeltag.find('link').text,channeltag.find('description').text)]
 				session.commit()
-			#for child in channeltag:
+			for child in channeltag:
 			#	print(child.tag, child.attrib, child.text)
 				#case
-				
-				#for item in child:
-				#	print(item.tag, item.attrib, item.text)
+				if 'item' in child.tag:
+					for item in child:
+						print(item.tag, item.attrib, item.text)
 				
 	
 	return
