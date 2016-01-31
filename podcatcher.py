@@ -5,6 +5,7 @@ import sqlalchemy as sa #python3-sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from table_def import Feed, Channel, Item
 import requests
+import xml.etree.ElementTree as ET #python3-elementtree
 
 
 #set_defaults
