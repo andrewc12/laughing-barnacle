@@ -38,12 +38,20 @@ def check_feed(feed):
 	result = requests.get(feed.link)
 	c = result.content
 	root = ET.fromstring(c)
-	for channel in root:
+	for channeltag in root:
 		#print(child.tag, child.attrib)
-		if 'channel' in channel.tag:
-			feed.channels = [Channel(channel.find('title').text,channel.find('link').text,channel.find('description').text)]
-			session.commit()
-			#for child in channel:
+		if 'channel' in channeltag.tag:
+			# editing Channel data
+			try:
+				feed, channel = session.query(Feed, Channel).filter(Feed.id==Channel.feed_id).first()
+				channel.title = channeltag.find('title').text
+				channel.link = channeltag.find('link').text
+				channel.description = channeltag.find('description').text
+				session.commit()
+			except:
+				feed.channels = [Channel(channeltag.find('title').text,channeltag.find('link').text,channeltag.find('description').text)]
+				session.commit()
+			#for child in channeltag:
 			#	print(child.tag, child.attrib, child.text)
 				#case
 				
