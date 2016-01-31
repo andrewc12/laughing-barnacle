@@ -23,6 +23,10 @@ def load_config():
 		cfg = yaml.load(ymlfile)
 	return
 
+def add_feed():
+	
+	return
+
 
 
 parser = argparse.ArgumentParser(description='TODO insert description')
