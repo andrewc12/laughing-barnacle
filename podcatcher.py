@@ -26,7 +26,9 @@ def load_config():
 def add_feed(url):
 	result = requests.get(url)
 	c = result.content
-
+	root = ET.fromstring(c)
+	for child in root:
+		print(child.tag, child.attrib)
 	return
 
 
