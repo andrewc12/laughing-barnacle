@@ -41,14 +41,16 @@ def check_feed(feed):
 	for channel in root:
 		#print(child.tag, child.attrib)
 		if 'channel' in channel.tag:
-			for child in channel:
-				print(child.tag, child.attrib, child.text)
+			feed.channels = [Channel(channel.find('title').text,channel.find('link').text,channel.find('description').text)]
+			session.commit()
+			#for child in channel:
+			#	print(child.tag, child.attrib, child.text)
+				#case
+				
 				#for item in child:
 				#	print(item.tag, item.attrib, item.text)
-				#feed.channels = [Channel("Read All About It", 
-                #           datetime.date(1988,12,01),
-                #           "Refuge", "CD")]
-
+				
+	
 	return
 
 def check_feeds():
