@@ -42,7 +42,7 @@ def check_feed(url):
 	return
 
 def check_feeds():
-	
+	print("~ Update feeds runs")
 	return
 
 
@@ -83,7 +83,10 @@ session = Session()
 
 
 
-
+if args.verbose:
+	print("~ Verbose!")
+else:
+	print("~ Not so verbose")
 
 
 
@@ -92,15 +95,10 @@ session = Session()
 if args.addfeed:
 	print("~ Add feed!")
 	add_feed(args.addfeed)
-else:
-	print("~ Not add feed")
 
+if args.updatefeeds:
+	print("~ Update feeds!")
+	check_feeds()
 
-
-
-if args.verbose:
-	print("~ Verbose!")
-else:
-	print("~ Not so verbose")
 
 
