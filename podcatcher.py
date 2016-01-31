@@ -55,8 +55,23 @@ def check_feed(feed):
 			#	print(child.tag, child.attrib, child.text)
 				#case
 				if 'item' in child.tag:
-					for item in child:
-						print(item.tag, item.attrib, item.text)
+					try:
+						channel, item = session.query(Channel, Item).filter(Channel.id==Item.channel_id).filter(Item.guid==child.find('guid')).first()
+						item.title = child.find('title').text
+						item.link = child.find('link').text
+						item.description = child.find('description').text
+						item.author = child.find('author').text
+						item.category = child.find('category').text
+						item.comments = child.find('comments').text
+						item.enclosure = child.find('enclosure').text
+						item.guid = child.find('guid').text
+						item.pubDate = child.find('pubDate').text
+						item.source = child.find('source').text
+						session.commit()
+					except:
+						print('error')
+					#for item in child:
+					#	print(item.tag, item.attrib, item.text)
 				
 	
 	return
