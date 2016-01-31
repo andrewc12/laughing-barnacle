@@ -105,6 +105,7 @@ parser.add_argument('--exportopml', '-e')
 parser.add_argument('--addfeed', '-a')
 parser.add_argument('--deletefeed', '-d')
 parser.add_argument('--updatefeeds', '-u', action='store_true')
+parser.add_argument('--outputm3u', '-o')
 
 
 args = parser.parse_args()
@@ -148,4 +149,11 @@ if args.updatefeeds:
 	check_feeds()
 
 
+if args.outputm3u:
+	print("~ Output m3u!")
+	output_m3u()
 
+
+#EXTM3U
+URL
+URL
