@@ -23,8 +23,10 @@ def load_config():
 		cfg = yaml.load(ymlfile)
 	return
 
-def add_feed():
-	
+def add_feed(url):
+	result = requests.get(url , headers=headers)
+	c = result.content
+
 	return
 
 
@@ -71,6 +73,7 @@ session = Session()
 
 if args.addfeed:
 	print("~ Add feed!")
+	add_feed(args.addfeed)
 else:
 	print("~ Not add feed")
 
