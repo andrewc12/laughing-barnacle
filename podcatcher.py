@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 import argparse
 import yaml #python3-yaml
-import sqlalchemy #python3-sqlalchemy
+import sqlalchemy as sa #python3-sqlalchemy
+from sqlalchemy.orm import sessionmaker
+from table_def import Feed, Channel, Item
+
+
 
 #set_defaults
 cfg = {}
