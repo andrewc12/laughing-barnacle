@@ -30,17 +30,18 @@ def add_feed(url):
 	session.add(new_feed)
 	# commit the record the database
 	session.commit()
-	#result = requests.get(url)
-	#c = result.content
-	#root = ET.fromstring(c)
-	#for child in root:
-	#	print(child.tag, child.attrib)
 	return
 
 def check_feed(url):
 	print("~ check_feed runs")
 	print(url)
-	
+	result = requests.get(url)
+	c = result.content
+	root = ET.fromstring(c)
+	for child in root:
+		print(child.tag, child.attrib)
+		for subchild in child:
+			print(subchild.tag, subchild.attrib)
 	return
 
 def check_feeds():
