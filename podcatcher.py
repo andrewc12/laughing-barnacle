@@ -153,7 +153,6 @@ if args.outputm3u:
 	print("~ Output m3u!")
 	output_m3u()
 
-
-#EXTM3U
-URL
-URL
+res = session.query(Item).order_by(Item.pubDate).all()
+for item in res:
+    print(item.title, item.pubDate)

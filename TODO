@@ -9,3 +9,5 @@ learn sqlalchemy
 #Try to select an item row using the rss guid then update it, if it fails create it 
 #remove coloum item.source
 output playlist of latest items as m3u 
+Learn how to get the latest item (by pubDate) for each channel
+store pubDate as unixtime
