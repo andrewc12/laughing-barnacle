@@ -58,22 +58,24 @@ def check_feed(feed):
 					for item in child:
 						#print(item.tag, item.attrib, item.text)
 						print(item.tag)
+						if 'enclosure' in item.tag:
+							print(item.tag, item.attrib['url'], item.text)
 					try:
-						channelthing, item = session.query(Channel, Item).filter(Channel.id==Item.channel_id).filter(Item.guid==child.find('guid').text).first()
+						channel, item = session.query(Channel, Item).filter(Channel.id==Item.channel_id).filter(Item.guid==child.find('guid').text).first()
 						item.title = child.find('title').text
 						item.link = child.find('link').text
 						item.description = child.find('description').text
 						item.author = child.find('author').text
 						item.category = child.find('category').text
 						item.comments = child.find('comments').text
-						item.enclosure = child.find('enclosure').text
+						item.enclosure = child.find('enclosure').attrib['url']
 						item.guid = child.find('guid').text
 						item.pubDate = child.find('pubDate').text
 						session.commit()
 					except:
-						more_items = [Item(child.find('title').text, child.find('link').text, child.find('description').text, child.find('author').text, child.find('category').text, child.find('comments').text, child.find('enclosure').text, child.find('guid').text, child.find('pubDate').text)]
+						more_items = [Item(child.find('title').text, child.find('link').text, child.find('description').text, child.find('author').text, child.find('category').text, child.find('comments').text, child.find('enclosure').attrib['url'], child.find('guid').text, child.find('pubDate').text)]
 						print(more_items)
-						channel.items(more_items)
+						channel.items.extend(more_items)
 						session.commit()
 					
 						
