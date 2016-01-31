@@ -40,8 +40,9 @@ def check_feed(url):
 	root = ET.fromstring(c)
 	for child in root:
 		print(child.tag, child.attrib)
-		for subchild in child:
-			print(subchild.tag, subchild.attrib)
+		if 'channel' in child.tag:
+			for channel in child:
+				print(channel.tag, channel.attrib)
 	return
 
 def check_feeds():
