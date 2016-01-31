@@ -38,11 +38,18 @@ def add_feed(url):
 	return
 
 def check_feed(url):
+	print("~ check_feed runs")
+	print(url)
 	
 	return
 
 def check_feeds():
-	print("~ Update feeds runs")
+	print("~ check_feeds runs")
+	# how to do a SELECT * (i.e. all)
+	res = session.query(Feed).all()
+	for feed in res:
+		print (feed.link)
+		check_feed(feed.link)
 	return
 
 
@@ -57,7 +64,7 @@ parser.add_argument('--importopml', '-i')
 parser.add_argument('--exportopml', '-e')
 parser.add_argument('--addfeed', '-a')
 parser.add_argument('--deletefeed', '-d')
-parser.add_argument('--updatefeeds', '-u')
+parser.add_argument('--updatefeeds', '-u', action='store_true')
 
 
 args = parser.parse_args()
