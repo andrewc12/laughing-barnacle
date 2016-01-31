@@ -43,6 +43,8 @@ def check_feed(feed):
 		if 'channel' in channeltag.tag:
 			# editing Channel data
 			try:
+				#Try to select an already existing row
+				#Otherwise create a new one
 				feed, channel = session.query(Feed, Channel).filter(Feed.id==Channel.feed_id).first()
 				channel.title = channeltag.find('title').text
 				channel.link = channeltag.find('link').text
@@ -52,15 +54,16 @@ def check_feed(feed):
 				feed.channels = [Channel(channeltag.find('title').text,channeltag.find('link').text,channeltag.find('description').text)]
 				session.commit()
 			for child in channeltag:
-			#	print(child.tag, child.attrib, child.text)
-				#case
 				if 'item' in child.tag:
-					for item in child:
+					#for item in child:
 						#print(item.tag, item.attrib, item.text)
-						print(item.tag)
-						if 'enclosure' in item.tag:
-							print(item.tag, item.attrib['url'], item.text)
+						#print(item.tag)
+						#if 'enclosure' in item.tag:
+						#	print(item.tag, item.attrib['url'], item.text)
+					# editing Item data
 					try:
+						#Try to select an already existing row
+						#Otherwise create a new one
 						channel, item = session.query(Channel, Item).filter(Channel.id==Item.channel_id).filter(Item.guid==child.find('guid').text).first()
 						item.title = child.find('title').text
 						item.link = child.find('link').text
@@ -77,9 +80,6 @@ def check_feed(feed):
 						print(more_items)
 						channel.items.extend(more_items)
 						session.commit()
-					
-						
-				
 	
 	return
 
