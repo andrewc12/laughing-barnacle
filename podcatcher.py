@@ -56,10 +56,10 @@ def check_feed(feed):
 				#case
 				if 'item' in child.tag:
 					for item in child:
-						print(item.tag, item.attrib, item.text)
-						
+						#print(item.tag, item.attrib, item.text)
+						print(item.tag)
 					try:
-						channelthing, item = session.query(Channel, Item).filter(Channel.id==Item.channel_id).filter(Item.guid==child.find('guid')).first()
+						channelthing, item = session.query(Channel, Item).filter(Channel.id==Item.channel_id).filter(Item.guid==child.find('guid').text).first()
 						item.title = child.find('title').text
 						item.link = child.find('link').text
 						item.description = child.find('description').text
@@ -69,10 +69,9 @@ def check_feed(feed):
 						item.enclosure = child.find('enclosure').text
 						item.guid = child.find('guid').text
 						item.pubDate = child.find('pubDate').text
-						item.source = child.find('source').text
 						session.commit()
 					except:
-						more_items = [Item(child.find('title').text, child.find('link').text, child.find('description').text, child.find('author').text, child.find('category').text, child.find('comments').text, child.find('enclosure').text, child.find('guid').text, child.find('pubDate').text, child.find('source').text)]
+						more_items = [Item(child.find('title').text, child.find('link').text, child.find('description').text, child.find('author').text, child.find('category').text, child.find('comments').text, child.find('enclosure').text, child.find('guid').text, child.find('pubDate').text)]
 						print(more_items)
 						channel.items(more_items)
 						session.commit()

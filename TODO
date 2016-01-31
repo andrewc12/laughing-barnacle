@@ -7,3 +7,4 @@ learn sqlalchemy
 #update flowchart with names (feeds, channels, items)
 #add arguments for updateing feeds
 Try to select an item row using the rss guid then update it, if it fails create it 
+remove coloum item.source

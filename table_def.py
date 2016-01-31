@@ -53,13 +53,12 @@ class Item(Base):
 	enclosure = sa.Column(sa.String, nullable=False)
 	guid = sa.Column(sa.String, nullable=False)
 	pubDate = sa.Column(sa.String, nullable=False)
-	source = sa.Column(sa.String, nullable=False)
 	
 	channel_id = sa.Column(sa.Integer, sa.ForeignKey("channels.id"))
 	channel = sa.orm.relationship("Channel", backref=sa.orm.backref("items", order_by=id))
 	
 	#----------------------------------------------------------------------
-	def __init__(self, title, link, description, author, category, comments, enclosure, guid, pubDate, source):
+	def __init__(self, title, link, description, author, category, comments, enclosure, guid, pubDate):
 		""""""
 		self.title = title
 		self.link = link
@@ -70,7 +69,6 @@ class Item(Base):
 		self.enclosure = enclosure
 		self.guid = guid
 		self.pubDate = pubDate
-		self.source = source
 		
 # create tables
 Base.metadata.create_all(engine)
