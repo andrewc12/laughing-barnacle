@@ -32,17 +32,23 @@ def add_feed(url):
 	session.commit()
 	return
 
-def check_feed(url):
+def check_feed(feed):
 	print("~ check_feed runs")
-	print(url)
-	result = requests.get(url)
+	print(feed.link)
+	result = requests.get(feed.link)
 	c = result.content
 	root = ET.fromstring(c)
-	for child in root:
-		print(child.tag, child.attrib)
-		if 'channel' in child.tag:
-			for channel in child:
-				print(channel.tag, channel.attrib)
+	for channel in root:
+		#print(child.tag, child.attrib)
+		if 'channel' in channel.tag:
+			for child in channel:
+				print(child.tag, child.attrib, child.text)
+				#for item in child:
+				#	print(item.tag, item.attrib, item.text)
+				#feed.channels = [Channel("Read All About It", 
+                #           datetime.date(1988,12,01),
+                #           "Refuge", "CD")]
+
 	return
 
 def check_feeds():
@@ -50,8 +56,8 @@ def check_feeds():
 	# how to do a SELECT * (i.e. all)
 	res = session.query(Feed).all()
 	for feed in res:
-		print (feed.link)
-		check_feed(feed.link)
+		print (feed)
+		check_feed(feed)
 	return
 
 
