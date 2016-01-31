@@ -37,6 +37,14 @@ def add_feed(url):
 	#	print(child.tag, child.attrib)
 	return
 
+def check_feed(url):
+	
+	return
+
+def check_feeds():
+	
+	return
+
 
 
 parser = argparse.ArgumentParser(description='TODO insert description')
@@ -49,6 +57,8 @@ parser.add_argument('--importopml', '-i')
 parser.add_argument('--exportopml', '-e')
 parser.add_argument('--addfeed', '-a')
 parser.add_argument('--deletefeed', '-d')
+parser.add_argument('--updatefeeds', '-u')
+
 
 args = parser.parse_args()
 

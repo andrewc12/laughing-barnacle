@@ -2,6 +2,7 @@
 #Look into configuration file saving/loading (pyyaml)
 #Think about database schema based on RSS specification
 learn sqlalchemy
-add arguments for adding feeds
+#add arguments for adding feeds
 #add feeds table
 #update flowchart with names (feeds, channels, items)
+add arguments for updateing feeds
