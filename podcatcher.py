@@ -4,7 +4,7 @@ import yaml #python3-yaml
 import sqlalchemy as sa #python3-sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from table_def import Feed, Channel, Item
-
+import requests
 
 
 #set_defaults
@@ -45,6 +45,24 @@ try:
 except FileNotFoundError as err:
 	save_config()
 	load_config()
+
+#database connection
+engine = sa.create_engine('sqlite:///podcasts.db', echo=True)
+# create a Session
+Session = sessionmaker(bind=engine)
+session = Session()
+
+
+
+
+
+
+
+
+
+
+
+
 
 if args.addfeed:
 	print("~ Add feed!")
