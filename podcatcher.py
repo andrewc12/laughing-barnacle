@@ -24,6 +24,12 @@ def load_config():
 	return
 
 def add_feed(url):
+	# Create a feed
+	new_feed = Feed(url)
+	# Add the record to the session object
+	session.add(new_feed)
+	# commit the record the database
+	session.commit()
 	#result = requests.get(url)
 	#c = result.content
 	#root = ET.fromstring(c)
